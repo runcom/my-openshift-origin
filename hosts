@@ -6,7 +6,6 @@ etcd
 [OSEv3:vars]
 ansible_ssh_user=root
 deployment_type=origin
-openshift_node_kubelet_args={'max-pods': ['40'], 'image-gc-high-threshold': ['90'], 'image-gc-low-threshold': ['80']}
 openshift_master_identity_providers=[{'name': 'github', 'login': 'true', 'challenge': 'false', 'kind': 'GitHubIdentityProvider', 'mappingMethod': 'lookup', 'clientID': '', 'clientSecret': ''}]
 
 # TODO: remove this once 1.3 is in the default centos repo (around Sept 26th)

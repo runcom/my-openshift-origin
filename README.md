@@ -1,3 +1,5 @@
+This repo will bring up an OpenShift Origin cluster on a CentOS 7.x server:
+
 * run `./reqs.sh`
 * copy ssh key to the server (under `~/.ssh/id_rsa`)
 * edit `hosts` and fill in the authentication section (Github OAuth)
