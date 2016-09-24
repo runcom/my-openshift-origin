@@ -1,0 +1,50 @@
+[OSEv3:children]
+masters
+nodes
+etcd
+
+[OSEv3:vars]
+ansible_ssh_user=root
+deployment_type=origin
+openshift_node_kubelet_args={'max-pods': ['40'], 'image-gc-high-threshold': ['90'], 'image-gc-low-threshold': ['80']}
+openshift_master_identity_providers=[{'name': 'github', 'login': 'true', 'challenge': 'false', 'kind': 'GitHubIdentityProvider', 'mappingMethod': 'lookup', 'clientID': '', 'clientSecret': ''}]
+
+# TODO: remove this once 1.3 is in the default centos repo (around Sept 26th)
+openshift_additional_repos=[{'id': 'paas7-openshift-origin-testing', 'name': 'paas7-openshift-origin-testing', 'baseurl': 'https://cbs.centos.org/repos/paas7-openshift-origin-testing/x86_64/os', 'enabled': 1, 'gpgcheck': 0}]
+
+osn_storage_plugin_deps=['ceph','glusterfs']
+
+#
+# https://www.howtoforge.com/nfs-server-and-client-on-centos-7
+# https://docs.openshift.com/enterprise/3.0/install_config/install/docker_registry.html
+# https://docs.openshift.org/latest/install_config/persistent_storage/persistent_storage_nfs.html
+#
+# openshift_hosted_registry_storage_kind=nfs
+# openshift_hosted_registry_storage_host=localhost
+# openshift_hosted_registry_storage_nfs_options='*(rw,root_squash)'
+# openshift_hosted_registry_storage_nfs_directory=/srv/nfs
+# openshift_hosted_registry_storage_volume_name=registry
+# openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
+#
+# openshift_hosted_metrics_deploy=true
+# openshift_hosted_metrics_storage_kind=nfs
+# openshift_hosted_metrics_storage_host=localhost
+# openshift_hosted_metrics_storage_nfs_directory=/srv/nfs
+# openshift_hosted_metrics_storage_volume_name=metrics
+# openshift_hosted_metrics_storage_volume_size=2Gi
+# openshift_hosted_metrics_storage_access_modes=['ReadWriteOnce']
+
+openshift_install_examples=true
+openshift_master_default_subdomain=oo.runcom.red
+
+osm_use_cockpit=true
+osm_cockpit_plugins=['cockpit-kubernetes']
+
+[masters]
+oo.runcom.red openshift_schedulable=true
+
+[nodes]
+oo.runcom.red openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
+
+[etcd]
+oo.runcom.red
