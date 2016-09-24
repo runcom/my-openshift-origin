@@ -5,3 +5,9 @@
 * cd into the `openshift-ansible` repository
 * run `ansible-playbook playbooks/byo/config.yml --inventory /path/to/hosts_file`
 * enjoy
+
+At this point you may probably want to:
+
+* secure the SSH server, change port, add user to sudo, do not permit root login and whatnot (changing port requires you to edit `/etc/sysconfig/iptables` to change port 22 to what you've chosen and reload iptables)
+* install and configure `fail2ban`
+* install a local nfs server to play with PersistentVolumes
