@@ -6,5 +6,5 @@ yum -y update
 systemctl unmask NetworkManager
 systemctl enable NetworkManager
 systemctl start NetworkManager
-git clone https://github.com/openshift-ansible
+git clone https://github.com/openshift/openshift-ansible $HOME/openshift-ansible
 reboot
