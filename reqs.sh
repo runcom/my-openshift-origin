@@ -1,7 +1,7 @@
 #!/bin/sh
 
-yum -y install vim htop epel-release
-yum -y install ansible pyOpenSSL python-cryptography
+yum -y install epel-release
+yum -y install vim htop ansible pyOpenSSL python-cryptography
 yum -y update
 systemctl unmask NetworkManager
 systemctl enable NetworkManager
