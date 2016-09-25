@@ -38,7 +38,7 @@ osm_cockpit_plugins=['cockpit-kubernetes']
 oo.runcom.red openshift_schedulable=true
 
 [nodes]
-oo.runcom.red openshift_node_labels="{'region': 'infra', 'zone': 'default'}"
+oo.runcom.red openshift_node_labels="{'region': 'infra'}"
 
 [etcd]
 oo.runcom.red
